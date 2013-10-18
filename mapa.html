@@ -50,7 +50,7 @@
                 });
 
                 var request = {
-                    location: new google.maps.LatLng(20.523056, -100.813889),
+                    location:new google.maps.LatLng(20.523056, -100.813889),
                     radius: 1000,
                     types: ['store']
                 };
@@ -91,6 +91,7 @@
                             (place.address_components[2] && place.address_components[2].short_name || '')
                         ].join(' ');
                     }
+                
 
                     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
                     infowindow.open(map, marker);
