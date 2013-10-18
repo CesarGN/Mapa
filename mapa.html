@@ -28,10 +28,12 @@
             var markerArray = [];
             var map;
             var infowindow;
+            var lat = 20.523056;
+            var long = -100.813889;
 
             function initialize() {
                 var mapOptions = {
-                    center: new google.maps.LatLng(20.523056, -100.813889),
+                    center: new google.maps.LatLng(lat, long),
                     zoom: 15,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
@@ -50,7 +52,7 @@
                 });
 
                 var request = {
-                    location: new google.maps.LatLng(20.523056, -100.813889),
+                    location: new google.maps.LatLng(lat, long),
                     radius: 1000,
                     types: ['store']
                 };
@@ -80,6 +82,12 @@
                         anchor: new google.maps.Point(17, 34),
                         scaledSize: new google.maps.Size(35, 35)
                     }));
+                    var posicion =(place.geometry.location.toString());
+                    posicion =(posicion.substring(1,posicion.length-1));
+                    document.getElementById('texto').innerHTML =(posicion.substring(1,posicion.length-1));
+                    var posic = posicion.split(",");
+                    document.getElementById("latitud").value=(posic[0]);
+                    document.getElementById("longitud").value=(posic[1]);    
                     marker.setPosition(place.geometry.location);
                     marker.setVisible(true);
 
@@ -94,7 +102,7 @@
 
                     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
                     infowindow.open(map, marker);
-                    
+
                 });
 
                 // Sets a listener on a radio button to change the filter type on Places
@@ -166,7 +174,7 @@
             </div>
 
         </div>
-
+        <div id="texto"></div>
 
 
 
